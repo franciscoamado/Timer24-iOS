@@ -41,22 +41,51 @@
                                 <rect key="frame" x="0.0" y="343" width="375" height="323.5"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EPg-Ei-tzp">
-                                        <rect key="frame" x="137.5" y="112" width="100" height="100"/>
+                                        <rect key="frame" x="137" y="112" width="100" height="100"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="FMa-Jx-lrW"/>
                                             <constraint firstAttribute="width" constant="100" id="nqq-EH-PdI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                        <state key="normal" title="Start"/>
                                         <connections>
                                             <action selector="startButtonAction:" destination="BYZ-38-t0r" eventType="touchDown" id="zHY-WO-kH4"/>
                                         </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9i8-eK-W5t">
+                                        <rect key="frame" x="302" y="250.5" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="A9c-P2-Ei1"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Vpe-GQ-lH8"/>
+                                            <constraint firstAttribute="height" constant="65" id="Yb0-mV-x0t"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="ceY-On-kX5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Reset14"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Vpe-GQ-lH8"/>
+                                                <exclude reference="ceY-On-kX5"/>
+                                            </mask>
+                                        </variation>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-MC-5Md">
+                                        <rect key="frame" x="302" y="8" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="5xj-Ke-i68"/>
+                                            <constraint firstAttribute="width" constant="65" id="HXm-KC-FjL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Reset24"/>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="EPg-Ei-tzp" firstAttribute="centerX" secondItem="bxt-Ns-K8b" secondAttribute="centerX" id="NDy-Zl-ilk"/>
+                                    <constraint firstAttribute="trailing" secondItem="z5g-MC-5Md" secondAttribute="trailing" constant="8" id="Ruc-oQ-zm7"/>
+                                    <constraint firstAttribute="trailing" secondItem="9i8-eK-W5t" secondAttribute="trailing" constant="8" id="kwI-zB-m7y"/>
                                     <constraint firstItem="EPg-Ei-tzp" firstAttribute="centerY" secondItem="bxt-Ns-K8b" secondAttribute="centerY" id="lRh-DK-ESM"/>
+                                    <constraint firstItem="z5g-MC-5Md" firstAttribute="top" secondItem="bxt-Ns-K8b" secondAttribute="top" constant="8" id="sPn-iy-JUt"/>
+                                    <constraint firstAttribute="bottom" secondItem="9i8-eK-W5t" secondAttribute="bottom" constant="8" id="v0P-ie-Svs"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -91,8 +120,10 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bottomView" destination="bxt-Ns-K8b" id="0bV-Xp-YVP"/>
-                        <outlet property="integerTimeLabel" destination="ZUC-ll-sbD" id="cQZ-2R-mO5"/>
+                        <outlet property="reset14Button" destination="9i8-eK-W5t" id="EmM-0Z-qt5"/>
+                        <outlet property="reset24Button" destination="z5g-MC-5Md" id="ZCk-RG-h3a"/>
                         <outlet property="startButton" destination="EPg-Ei-tzp" id="VJf-qN-Pvh"/>
+                        <outlet property="timeLabel" destination="ZUC-ll-sbD" id="a6H-lE-9Aw"/>
                         <outlet property="topView" destination="zwn-VE-sMQ" id="bS3-ji-7Kp"/>
                     </connections>
                 </viewController>
