@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         startButton.layer.borderColor = view.backgroundColor!.CGColor
         
 // Numpad Button design configurations
-        numpadButton.setTitle(String.materialIcon(.DeveloperBoard), forState: UIControlState.Normal)
+        numpadButton.setTitle(String.materialIcon(.Dialpad), forState: UIControlState.Normal)
         numpadButton.titleLabel!.font = UIFont.materialIconOfSize(32)
         numpadButton.titleLabel!.textColor = view.backgroundColor
         numpadButton.setTitleColor(view.backgroundColor, forState:UIControlState.Normal)
