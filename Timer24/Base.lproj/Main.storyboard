@@ -21,21 +21,37 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zwn-VE-sMQ">
                                 <rect key="frame" x="0.0" y="20" width="375" height="323.5"/>
                                 <subviews>
+                                    <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Jw-gf-t2h">
+                                        <rect key="frame" x="0.0" y="-20" width="375" height="344"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="375" id="MAL-AV-Pnu"/>
+                                            <constraint firstAttribute="height" constant="344" id="eQU-2X-76D"/>
+                                        </constraints>
+                                    </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUC-ll-sbD">
                                         <rect key="frame" x="80.5" y="126" width="214" height="72"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" id="F9p-9u-LHJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="60"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="5Jw-gf-t2h" firstAttribute="leading" secondItem="zwn-VE-sMQ" secondAttribute="leading" id="GQh-1E-A4o"/>
+                                    <constraint firstItem="5Jw-gf-t2h" firstAttribute="top" secondItem="zwn-VE-sMQ" secondAttribute="top" constant="-20" id="aLh-oI-Y9Z"/>
+                                    <constraint firstAttribute="trailing" secondItem="5Jw-gf-t2h" secondAttribute="trailing" id="bCz-Gz-Phz"/>
                                     <constraint firstItem="ZUC-ll-sbD" firstAttribute="centerX" secondItem="zwn-VE-sMQ" secondAttribute="centerX" id="dhs-o4-UwW"/>
                                     <constraint firstItem="ZUC-ll-sbD" firstAttribute="centerY" secondItem="zwn-VE-sMQ" secondAttribute="centerY" id="elp-Hh-sgn"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bCz-Gz-Phz"/>
+                                    </mask>
+                                </variation>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bxt-Ns-K8b">
                                 <rect key="frame" x="0.0" y="343" width="375" height="323.5"/>
@@ -77,6 +93,16 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Reset24"/>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-zJ-WZe">
+                                        <rect key="frame" x="8" y="8" width="65" height="65"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="6Wb-WN-fcf"/>
+                                            <constraint firstAttribute="width" constant="65" id="9TR-07-7dr"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="bJN-yw-qM8"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="eYB-vm-xOD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -85,7 +111,9 @@
                                     <constraint firstAttribute="trailing" secondItem="9i8-eK-W5t" secondAttribute="trailing" constant="8" id="kwI-zB-m7y"/>
                                     <constraint firstItem="EPg-Ei-tzp" firstAttribute="centerY" secondItem="bxt-Ns-K8b" secondAttribute="centerY" id="lRh-DK-ESM"/>
                                     <constraint firstItem="z5g-MC-5Md" firstAttribute="top" secondItem="bxt-Ns-K8b" secondAttribute="top" constant="8" id="sPn-iy-JUt"/>
+                                    <constraint firstItem="Wu3-zJ-WZe" firstAttribute="top" secondItem="bxt-Ns-K8b" secondAttribute="top" constant="8" id="sRX-ir-Ulw"/>
                                     <constraint firstAttribute="bottom" secondItem="9i8-eK-W5t" secondAttribute="bottom" constant="8" id="v0P-ie-Svs"/>
+                                    <constraint firstItem="Wu3-zJ-WZe" firstAttribute="leading" secondItem="bxt-Ns-K8b" secondAttribute="leading" constant="8" id="vgR-aE-AJU"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -120,6 +148,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="bottomView" destination="bxt-Ns-K8b" id="0bV-Xp-YVP"/>
+                        <outlet property="numpadButton" destination="Wu3-zJ-WZe" id="PPi-w5-g2e"/>
+                        <outlet property="progressView" destination="5Jw-gf-t2h" id="mT2-z5-kIO"/>
+                        <outlet property="progressViewWidthConstraint" destination="MAL-AV-Pnu" id="kcE-cq-lbo"/>
                         <outlet property="reset14Button" destination="9i8-eK-W5t" id="EmM-0Z-qt5"/>
                         <outlet property="reset24Button" destination="z5g-MC-5Md" id="ZCk-RG-h3a"/>
                         <outlet property="startButton" destination="EPg-Ei-tzp" id="VJf-qN-Pvh"/>

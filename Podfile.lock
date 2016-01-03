@@ -2,11 +2,14 @@ PODS:
   - ChameleonFramework/Default (2.0.6)
   - ChameleonFramework/Swift (2.0.6):
     - ChameleonFramework/Default
+  - GoogleMaterialIconFont (0.2.1)
 
 DEPENDENCIES:
   - ChameleonFramework/Swift
+  - GoogleMaterialIconFont
 
 SPEC CHECKSUMS:
   ChameleonFramework: a6b466873ff9a4ce3a5196c20bccf1a97ad9f446
+  GoogleMaterialIconFont: 32dd19dcad83d8a68d41820bb83902b942b2b7c9
 
 COCOAPODS: 0.39.0

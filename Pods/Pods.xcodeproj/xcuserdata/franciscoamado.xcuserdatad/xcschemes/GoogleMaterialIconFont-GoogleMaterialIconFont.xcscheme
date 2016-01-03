@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'E3E141308A01B30BF812B0FE'
-               BlueprintName = 'ChameleonFramework'
+               BlueprintIdentifier = 'E63C666DD3F1AF1F2D7D2F65'
+               BlueprintName = 'GoogleMaterialIconFont-GoogleMaterialIconFont'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ChameleonFramework.framework'>
+               BuildableName = 'GoogleMaterialIconFont.bundle'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
