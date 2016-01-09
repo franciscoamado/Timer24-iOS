@@ -28,6 +28,11 @@
                                             <constraint firstAttribute="width" constant="375" id="MAL-AV-Pnu"/>
                                             <constraint firstAttribute="height" constant="344" id="eQU-2X-76D"/>
                                         </constraints>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="eQU-2X-76D"/>
+                                            </mask>
+                                        </variation>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Timer24" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUC-ll-sbD">
                                         <rect key="frame" x="80.5" y="126" width="214" height="72"/>
@@ -41,6 +46,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="5Jw-gf-t2h" secondAttribute="bottom" id="5Bm-gZ-tlc"/>
                                     <constraint firstItem="5Jw-gf-t2h" firstAttribute="leading" secondItem="zwn-VE-sMQ" secondAttribute="leading" id="GQh-1E-A4o"/>
                                     <constraint firstItem="5Jw-gf-t2h" firstAttribute="top" secondItem="zwn-VE-sMQ" secondAttribute="top" constant="-20" id="aLh-oI-Y9Z"/>
                                     <constraint firstAttribute="trailing" secondItem="5Jw-gf-t2h" secondAttribute="trailing" id="bCz-Gz-Phz"/>
@@ -63,58 +69,86 @@
                                             <constraint firstAttribute="width" constant="100" id="nqq-EH-PdI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                        <state key="normal" title="Start"/>
                                         <connections>
                                             <action selector="startButtonAction:" destination="BYZ-38-t0r" eventType="touchDown" id="zHY-WO-kH4"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9i8-eK-W5t">
-                                        <rect key="frame" x="302" y="250.5" width="65" height="65"/>
+                                        <rect key="frame" x="8" y="129" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="65" id="A9c-P2-Ei1"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Vpe-GQ-lH8"/>
                                             <constraint firstAttribute="height" constant="65" id="Yb0-mV-x0t"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="ceY-On-kX5"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Reset14"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="14"/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="Vpe-GQ-lH8"/>
                                                 <exclude reference="ceY-On-kX5"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="reset14ButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="j9a-ZA-AXd"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z5g-MC-5Md">
-                                        <rect key="frame" x="302" y="8" width="65" height="65"/>
+                                        <rect key="frame" x="302" y="129" width="65" height="65"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="65" id="5xj-Ke-i68"/>
                                             <constraint firstAttribute="width" constant="65" id="HXm-KC-FjL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="Reset24"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="24"/>
+                                        <connections>
+                                            <action selector="reset24ButtonAction:" destination="BYZ-38-t0r" eventType="touchDown" id="8WT-C8-y1Q"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wu3-zJ-WZe">
-                                        <rect key="frame" x="8" y="8" width="65" height="65"/>
+                                        <rect key="frame" x="162" y="8" width="50" height="50"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="65" id="6Wb-WN-fcf"/>
-                                            <constraint firstAttribute="width" constant="65" id="9TR-07-7dr"/>
+                                            <constraint firstAttribute="height" constant="50" id="6Wb-WN-fcf"/>
+                                            <constraint firstAttribute="width" constant="50" id="9TR-07-7dr"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="bJN-yw-qM8"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="65" id="eYB-vm-xOD"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="Keyboard"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="bJN-yw-qM8"/>
+                                                <exclude reference="eYB-vm-xOD"/>
+                                            </mask>
+                                        </variation>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="9i8-eK-W5t" firstAttribute="leading" secondItem="bxt-Ns-K8b" secondAttribute="leading" constant="8" id="7Tv-4v-sNH"/>
+                                    <constraint firstItem="9i8-eK-W5t" firstAttribute="centerY" secondItem="bxt-Ns-K8b" secondAttribute="centerY" id="7gT-dP-qY4"/>
                                     <constraint firstItem="EPg-Ei-tzp" firstAttribute="centerX" secondItem="bxt-Ns-K8b" secondAttribute="centerX" id="NDy-Zl-ilk"/>
                                     <constraint firstAttribute="trailing" secondItem="z5g-MC-5Md" secondAttribute="trailing" constant="8" id="Ruc-oQ-zm7"/>
+                                    <constraint firstAttribute="trailing" secondItem="z5g-MC-5Md" secondAttribute="trailing" constant="8" id="kVN-e9-AzO"/>
                                     <constraint firstAttribute="trailing" secondItem="9i8-eK-W5t" secondAttribute="trailing" constant="8" id="kwI-zB-m7y"/>
                                     <constraint firstItem="EPg-Ei-tzp" firstAttribute="centerY" secondItem="bxt-Ns-K8b" secondAttribute="centerY" id="lRh-DK-ESM"/>
+                                    <constraint firstItem="z5g-MC-5Md" firstAttribute="centerY" secondItem="bxt-Ns-K8b" secondAttribute="centerY" id="psN-p2-GAe"/>
+                                    <constraint firstItem="Wu3-zJ-WZe" firstAttribute="centerX" secondItem="bxt-Ns-K8b" secondAttribute="centerX" id="qKx-9k-Kay"/>
                                     <constraint firstItem="z5g-MC-5Md" firstAttribute="top" secondItem="bxt-Ns-K8b" secondAttribute="top" constant="8" id="sPn-iy-JUt"/>
                                     <constraint firstItem="Wu3-zJ-WZe" firstAttribute="top" secondItem="bxt-Ns-K8b" secondAttribute="top" constant="8" id="sRX-ir-Ulw"/>
                                     <constraint firstAttribute="bottom" secondItem="9i8-eK-W5t" secondAttribute="bottom" constant="8" id="v0P-ie-Svs"/>
                                     <constraint firstItem="Wu3-zJ-WZe" firstAttribute="leading" secondItem="bxt-Ns-K8b" secondAttribute="leading" constant="8" id="vgR-aE-AJU"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="vgR-aE-AJU"/>
+                                        <exclude reference="kwI-zB-m7y"/>
+                                        <exclude reference="v0P-ie-Svs"/>
+                                        <exclude reference="Ruc-oQ-zm7"/>
+                                        <exclude reference="sPn-iy-JUt"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

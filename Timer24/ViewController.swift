@@ -25,7 +25,8 @@ class ViewController: UIViewController {
     let STRING_START:String = "Start"
     let STRING_STOP:String = "Stop"
     
-    let PROGRESS_VIEW_WIDTH = 375
+    let screenSize:CGRect = UIScreen.mainScreen().bounds
+    let PROGRESS_VIEW_WIDTH:CGFloat = UIScreen.mainScreen().bounds.width
 
     let TIME_INCREMENT:NSTimeInterval = 0.01
     let TIME_24SEC:NSTimeInterval = 24.0
@@ -54,9 +55,8 @@ class ViewController: UIViewController {
 // Start Button design configurations
         changeStartButtonTextTo(STRING_START)
         startButton.titleLabel!.textColor = view.backgroundColor
+        startButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         startButton.setTitleColor(view.backgroundColor, forState:UIControlState.Normal)
-        startButton.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Highlighted)
-        startButton.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Selected)
         startButton.layer.cornerRadius = startButton.frame.width / 2
         startButton.layer.borderWidth = 2
         startButton.layer.borderColor = view.backgroundColor!.CGColor
@@ -64,28 +64,25 @@ class ViewController: UIViewController {
 // Numpad Button design configurations
         numpadButton.setTitle(String.materialIcon(.Dialpad), forState: UIControlState.Normal)
         numpadButton.titleLabel!.font = UIFont.materialIconOfSize(32)
-        numpadButton.titleLabel!.textColor = view.backgroundColor
+        numpadButton.titleLabel!.textColor = UIColor.flatSandColor().colorWithAlphaComponent(0.0)
+        numpadButton.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         numpadButton.setTitleColor(view.backgroundColor, forState:UIControlState.Normal)
-        numpadButton.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Highlighted)
-        numpadButton.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Selected)
         numpadButton.layer.cornerRadius = numpadButton.frame.width / 2
         numpadButton.layer.borderWidth = 2
         numpadButton.layer.borderColor = view.backgroundColor!.CGColor
 
 // Reset24 Button design configurations
         reset24Button.titleLabel!.textColor = view.backgroundColor
+        reset24Button.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         reset24Button.setTitleColor(view.backgroundColor, forState:UIControlState.Normal)
-        reset24Button.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Highlighted)
-        reset24Button.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Selected)
         reset24Button.layer.cornerRadius = reset24Button.frame.width / 2
         reset24Button.layer.borderWidth = 2
         reset24Button.layer.borderColor = view.backgroundColor!.CGColor
         
 // Reset14 Button design configurations
         reset14Button.titleLabel!.textColor = view.backgroundColor
+        reset14Button.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.2)
         reset14Button.setTitleColor(view.backgroundColor, forState:UIControlState.Normal)
-        reset14Button.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Highlighted)
-        reset14Button.setTitleColor(UIColor.flatSandColor().colorWithAlphaComponent(0.2), forState:UIControlState.Selected)
         reset14Button.layer.cornerRadius = reset14Button.frame.width / 2
         reset14Button.layer.borderWidth = 2
         reset14Button.layer.borderColor = view.backgroundColor!.CGColor
@@ -97,45 +94,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func startTimerWithTimeInterval(timeInverval:NSTimeInterval) {
-        timeCount = timeInverval
-        timer = NSTimer.scheduledTimerWithTimeInterval(TIME_INCREMENT, target:self, selector:Selector("updateTimer:"), userInfo:timer.timeInterval, repeats:true)
-    }
-    
-    func changeStartButtonTextTo(text:String){
-        if text == STRING_START {
-            startButton.setTitle(STRING_START, forState:UIControlState.Normal)
-            startButton.setTitle(STRING_STOP, forState:UIControlState.Highlighted)
-            startButton.setTitle(STRING_STOP, forState:UIControlState.Selected)
-        } else {
-            startButton.setTitle(STRING_STOP, forState:UIControlState.Normal)
-            startButton.setTitle(STRING_START, forState:UIControlState.Highlighted)
-            startButton.setTitle(STRING_START, forState:UIControlState.Selected)
-        }
-    }
-    
-    @IBAction func startButtonAction(sender: UIButton) {
-        if timer.valid {
-            changeStartButtonTextTo(STRING_START)
-            timePaused = timeCount
-            timer.invalidate()
-        } else {
-            changeStartButtonTextTo(STRING_STOP)
-            if timePaused != 0.0 {
-                startTimerWithTimeInterval(timePaused)
-            } else {
-                startTimerWithTimeInterval(timePrefered)
-            }
-        }
-    }
-    
     func animateProgressViewWithSeconds(seconds:Double, secondsFraction:Double){
         if seconds > 0.0 {
             if secondsFraction <= 0.1 {
                 let timeLeft:NSTimeInterval = self.timePrefered - seconds
                 let timeLeftInt:Int = Int(timeLeft) + 1
-                let ratio = (self.PROGRESS_VIEW_WIDTH * timeLeftInt) / Int(self.timePrefered)
-                let progressViewWidth:CGFloat = CGFloat(self.PROGRESS_VIEW_WIDTH - ratio)
+                let ratio:CGFloat = (self.PROGRESS_VIEW_WIDTH * CGFloat(timeLeftInt)) / CGFloat(self.timePrefered)
+                let progressViewWidth:CGFloat = self.PROGRESS_VIEW_WIDTH - ratio
                 
                 if !self.animationOn && self.progressViewWidthConstraint.constant != progressViewWidth {
                     self.animationOn = true
@@ -151,6 +116,75 @@ class ViewController: UIViewController {
         }
     }
     
+// MARK: Button Delegation
+    @IBAction func startButtonAction(sender: UIButton) {
+        self.startStopTimer()
+        if timer.valid {
+            changeStartButtonTextTo(STRING_STOP)
+        } else {
+            changeStartButtonTextTo(STRING_START)
+        }
+    }
+    
+    func changeStartButtonTextTo(text:String){
+        if text == STRING_START {
+            startButton.setTitle(STRING_START, forState:UIControlState.Normal)
+            startButton.setTitle(STRING_STOP, forState:UIControlState.Highlighted)
+            startButton.setTitle(STRING_STOP, forState:UIControlState.Selected)
+        } else {
+            startButton.setTitle(STRING_STOP, forState:UIControlState.Normal)
+            startButton.setTitle(STRING_START, forState:UIControlState.Highlighted)
+            startButton.setTitle(STRING_START, forState:UIControlState.Selected)
+        }
+    }
+    
+    @IBAction func reset24ButtonAction(sender: UIButton) {
+        self.progressViewWidthConstraint.constant = CGFloat(self.PROGRESS_VIEW_WIDTH)
+        self.progressView.layoutIfNeeded()
+        timePrefered = TIME_24SEC
+        self.startTimerWithTimeInterval(timePrefered)
+    }
+    
+    @IBAction func reset14ButtonAction(sender: UIButton) {
+        self.progressViewWidthConstraint.constant = CGFloat(self.PROGRESS_VIEW_WIDTH)
+        self.progressView.layoutIfNeeded()
+        timePrefered = TIME_14SEC
+        self.startTimerWithTimeInterval(timePrefered)
+    }
+    
+// MARK: Timer Delegation
+    func startTimerWithTimeInterval(timeInverval:NSTimeInterval) {
+        if timer.valid{
+            timer.invalidate()
+        }
+        timeCount = timeInverval
+        timer = NSTimer.scheduledTimerWithTimeInterval(TIME_INCREMENT, target:self, selector:Selector("updateTimer:"), userInfo:timer.timeInterval, repeats:true)
+        changeStartButtonTextTo(STRING_STOP)
+    }
+    
+    func startStopTimer(){
+        if timer.valid {
+            timePaused = timeCount
+            timer.invalidate()
+        } else {
+            if timePaused != 0.0 {
+                startTimerWithTimeInterval(timePaused)
+            } else {
+                startTimerWithTimeInterval(timePrefered)
+            }
+        }
+    }
+    
+    func updateTimer(timeInterval:NSTimeInterval) {
+        timeCount -= TIME_INCREMENT
+        let timeAsString = timeString(timeCount)
+        timeLabel.text = timeAsString
+        
+        if(timeCount <= 0){
+            self.timerDidEnd()
+        }
+    }
+    
     func timeString(time:NSTimeInterval) -> String {
         let minutes = Int(time) / 60
         let seconds = time - Double(minutes) * 60
@@ -159,15 +193,9 @@ class ViewController: UIViewController {
         return String(format:"%02i.%01i",Int(seconds),Int(secondsFraction * 10.0))
     }
     
-    func updateTimer(timeInterval:NSTimeInterval) {
-        // Something cool
-        timeCount -= TIME_INCREMENT
-        let timeAsString = timeString(timeCount)
-        timeLabel.text = timeAsString
-    }
-    
-    @IBAction func endButtonAction(sender: UIButton) {
-        startButton.layer.borderColor = UIColor.flatSandColor().colorWithAlphaComponent(0.5).CGColor
+    func timerDidEnd() {
+        timer.invalidate()
+        timePaused = 0.0
     }
 }
 
